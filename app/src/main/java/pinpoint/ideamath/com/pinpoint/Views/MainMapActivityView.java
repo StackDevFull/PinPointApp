@@ -1,4 +1,4 @@
-package pinpoint.ideamath.com.pinpoint.Views;
+package pinpoint.ideamath.com.pinpoint.views;
 
 import com.tenpearls.android.interfaces.Controller;
 import com.tenpearls.android.views.BaseView;
