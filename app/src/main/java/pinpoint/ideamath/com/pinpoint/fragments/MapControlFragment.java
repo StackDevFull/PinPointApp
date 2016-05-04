@@ -1,29 +1,27 @@
 package pinpoint.ideamath.com.pinpoint.fragments;
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
+import com.tenpearls.android.activities.BaseActivity;
 import com.tenpearls.android.fragments.BaseFragment;
 import com.tenpearls.android.interfaces.Controller;
 import com.tenpearls.android.service.ServiceFactory;
 import com.tenpearls.android.views.BaseView;
 
-import pinpoint.ideamath.com.pinpoint.R;
+import pinpoint.ideamath.com.pinpoint.activities.MainMapActivity;
+import pinpoint.ideamath.com.pinpoint.views.MapControlFragmentView;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MapFragment.OnFragmentInteractionListener} interface
+ * {@link MapControlFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link MapFragment#newInstance} factory method to
+ * Use the {@link MapControlFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MapFragment extends BaseFragment {
+public class MapControlFragment extends BaseFragment {
+
+
 
     @Override
     protected ServiceFactory getServiceFactory() {
@@ -32,6 +30,8 @@ public class MapFragment extends BaseFragment {
 
     @Override
     public BaseView getViewForController(Controller controller) {
-        return null;
+        return new MapControlFragmentView(controller);
     }
+
+    //this.getBaseActivity() to get attached activity
 }
