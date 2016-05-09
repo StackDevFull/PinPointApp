@@ -18,7 +18,7 @@ public class MapControlFragmentView extends BaseView {
     static final LatLng TutorialsPoint = new LatLng(21 , 57);
     private GoogleMap googleMap;
 
-
+    //constructor
     public MapControlFragmentView(Controller controller) {
         super(controller);
     }

@@ -8,6 +8,7 @@ import com.tenpearls.android.interfaces.Controller;
 import com.tenpearls.android.views.BaseView;
 
 import pinpoint.ideamath.com.pinpoint.R;
+import pinpoint.ideamath.com.pinpoint.activities.MainMapActivity;
 import pinpoint.ideamath.com.pinpoint.fragments.MapControlFragment;
 import pinpoint.ideamath.com.pinpoint.fragments.TestFragment;
 
@@ -26,7 +27,7 @@ public class MainMapActivityView extends BaseView {
 
     @Override
     public void onCreate() {
-
+        ((MainMapActivity)getBaseActivity()).showMapFragment();
     }
 
     @Override

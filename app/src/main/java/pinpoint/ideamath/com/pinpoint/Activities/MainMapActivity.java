@@ -16,6 +16,15 @@ import pinpoint.ideamath.com.pinpoint.views.MainMapActivityView;
 
 public class MainMapActivity extends BaseActivity {
 
+    public void showMapFragment(){
+        FragmentManager fragmentManager = getBaseActivity().getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        MapControlFragment mapFragment = new MapControlFragment();
+        fragmentTransaction.add(R.id.parentFrame, mapFragment);
+        fragmentTransaction.commit();
+    }
+
     @Override
     public BaseView getViewForController(Controller controller) {
         return new MainMapActivityView(controller);
@@ -24,13 +33,6 @@ public class MainMapActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        MapControlFragment mapFragment = new MapControlFragment();
-        fragmentTransaction.add(R.id.parentFrame, mapFragment);
-        fragmentTransaction.commit();
     }
 
     @Override
