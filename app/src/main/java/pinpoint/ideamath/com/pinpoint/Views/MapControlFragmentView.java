@@ -1,5 +1,6 @@
 package pinpoint.ideamath.com.pinpoint.views;
 
+import android.view.View;
 import android.widget.Button;
 
 import com.google.android.gms.maps.MapFragment;
@@ -12,6 +13,7 @@ import com.tenpearls.android.views.BaseView;
 import com.google.android.gms.maps.GoogleMap;
 import pinpoint.ideamath.com.pinpoint.R;
 import pinpoint.ideamath.com.pinpoint.fragments.MapControlFragment;
+import pinpoint.ideamath.com.pinpoint.helpers.LocationHelper;
 
 /**
  * Created by firdous on 04/05/16.
@@ -20,6 +22,7 @@ public class MapControlFragmentView extends BaseView {
 
     static final LatLng TutorialsPoint = new LatLng(21 , 57);
     private GoogleMap googleMap;
+    LocationHelper locationHelper;
 
     // UI elements
     private TextView lblLocation;
@@ -39,6 +42,9 @@ public class MapControlFragmentView extends BaseView {
     public void onCreate() {
 
 //        ((MapControlFragment) controller).    To call self controller
+
+        locationHelper = new LocationHelper();
+        locationHelper.setListener((MapControlFragment)controller);
 
         try {
             if (googleMap == null) {
@@ -60,7 +66,7 @@ public class MapControlFragmentView extends BaseView {
 
             @Override
             public void onClick(View v) {
-                displayLocation();
+                locationHelper.displayLocation();
             }
         });
     }

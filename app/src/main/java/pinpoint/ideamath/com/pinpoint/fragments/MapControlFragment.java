@@ -9,6 +9,7 @@ import com.tenpearls.android.service.ServiceFactory;
 import com.tenpearls.android.views.BaseView;
 
 import pinpoint.ideamath.com.pinpoint.activities.MainMapActivity;
+import pinpoint.ideamath.com.pinpoint.helpers.LocationHelper;
 import pinpoint.ideamath.com.pinpoint.views.MapControlFragmentView;
 
 /**
@@ -19,7 +20,7 @@ import pinpoint.ideamath.com.pinpoint.views.MapControlFragmentView;
  * Use the {@link MapControlFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MapControlFragment extends BaseFragment {
+public class MapControlFragment extends BaseFragment implements LocationHelper.LocationHelperEventListener {
 
 
 
@@ -31,6 +32,16 @@ public class MapControlFragment extends BaseFragment {
     @Override
     public BaseView getViewForController(Controller controller) {
         return new MapControlFragmentView(controller);
+    }
+
+    @Override
+    public BaseActivity getConsumerActivity() {
+        return getBaseActivity();
+    }
+
+    @Override
+    public void returnLocation(double latitude, double longitude) {
+
     }
 
     //this.getBaseActivity() to get attached activity

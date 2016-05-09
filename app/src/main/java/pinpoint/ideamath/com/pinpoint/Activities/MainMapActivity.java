@@ -15,7 +15,7 @@ import pinpoint.ideamath.com.pinpoint.fragments.TestFragment;
 import pinpoint.ideamath.com.pinpoint.helpers.LocationHelper;
 import pinpoint.ideamath.com.pinpoint.views.MainMapActivityView;
 
-public class MainMapActivity extends BaseActivity implements LocationHelper.LocationHelperEventListener {
+public class MainMapActivity extends BaseActivity{
 
     public void showMapFragment(){
         FragmentManager fragmentManager = getBaseActivity().getFragmentManager();
@@ -34,23 +34,10 @@ public class MainMapActivity extends BaseActivity implements LocationHelper.Loca
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        LocationHelper locationHelper = new LocationHelper();
-        locationHelper.setListener(this);
     }
 
     @Override
     protected ServiceFactory getServiceFactory() {
         return null;
-    }
-
-    @Override
-    public BaseActivity getConsumerActivity() {
-        return this;
-    }
-
-    @Override
-    public void returnLocation(double latitude, double longitude) {
-
     }
 }
