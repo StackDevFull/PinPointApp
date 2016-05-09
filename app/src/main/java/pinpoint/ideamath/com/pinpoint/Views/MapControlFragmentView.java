@@ -1,9 +1,12 @@
 package pinpoint.ideamath.com.pinpoint.views;
 
+import android.widget.Button;
+
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.tenpearls.android.components.TextView;
 import com.tenpearls.android.interfaces.Controller;
 import com.tenpearls.android.views.BaseView;
 import com.google.android.gms.maps.GoogleMap;
@@ -17,6 +20,10 @@ public class MapControlFragmentView extends BaseView {
 
     static final LatLng TutorialsPoint = new LatLng(21 , 57);
     private GoogleMap googleMap;
+
+    // UI elements
+    private TextView lblLocation;
+    private Button btnShowLocation, btnStartLocationUpdates;
 
     //constructor
     public MapControlFragmentView(Controller controller) {
@@ -44,6 +51,18 @@ public class MapControlFragmentView extends BaseView {
         catch (Exception e) {
             e.printStackTrace();
         }
+
+        lblLocation = (TextView) findViewById(R.id.lblLocation);
+        btnShowLocation = (Button) findViewById(R.id.btnShowLocation);
+        btnStartLocationUpdates = (Button) findViewById(R.id.btnLocationUpdates);
+
+        btnShowLocation.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                displayLocation();
+            }
+        });
     }
 
     @Override
