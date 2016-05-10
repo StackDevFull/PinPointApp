@@ -41,7 +41,7 @@ public class MapControlFragment extends BaseFragment implements LocationHelper.L
 
     @Override
     public void returnLocation(double latitude, double longitude) {
-
+        ((MapControlFragmentView)view).updateLocationLbl(latitude, longitude);
     }
 
     //this.getBaseActivity() to get attached activity

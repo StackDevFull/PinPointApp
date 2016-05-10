@@ -19,6 +19,8 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.tenpearls.android.activities.BaseActivity;
 
+import pinpoint.ideamath.com.pinpoint.PinPointApplication;
+
 /**
  * Created by firdous on 09/05/16.
  */
@@ -45,19 +47,21 @@ public class LocationHelper implements GoogleApiClient.ConnectionCallbacks,
     private static int DISPLACEMENT = 10; // 10 meters
     LocationHelperEventListener mListener;
 
-    public LocationHelper() {
-        helperInstance = this;
-    }
+    public LocationHelper() {}
 
     public static LocationHelper getInstance() {
+        if (helperInstance == null){
+            helperInstance = new LocationHelper();
+        }
         return helperInstance;
     }
 
     public void setListener(LocationHelperEventListener listener) {
         mListener = listener;
+        TAG = listener.getConsumerActivity().getClass().getSimpleName();
+    }
 
-        TAG = mListener.getConsumerActivity().getClass().getSimpleName();
-
+    public void connect(){
         if (checkPlayServices()) {
             buildGoogleApiClient();
             createLocationRequest();
@@ -66,9 +70,13 @@ public class LocationHelper implements GoogleApiClient.ConnectionCallbacks,
         start();
     }
 
+    public void disconnect(){
+        stopLocationUpdates();
+        stop();
+    }
+
     public interface LocationHelperEventListener {
         public BaseActivity getConsumerActivity();
-
         public void returnLocation(double latitude, double longitude);
     }
 
@@ -112,13 +120,6 @@ public class LocationHelper implements GoogleApiClient.ConnectionCallbacks,
         BaseActivity consumerActivity = mListener.getConsumerActivity();
 
         if (ActivityCompat.checkSelfPermission(consumerActivity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(consumerActivity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
 
@@ -136,10 +137,7 @@ public class LocationHelper implements GoogleApiClient.ConnectionCallbacks,
             mListener.returnLocation(latitude, longitude);
 
         } else {
-
             Log.i(TAG, "Couldn't get the location. Make sure location is enabled on the device");
-            //lblLocation
-            //.setText("(Couldn't get the location. Make sure location is enabled on the device)");
         }
     }
 
@@ -148,27 +146,16 @@ public class LocationHelper implements GoogleApiClient.ConnectionCallbacks,
      * */
     public void togglePeriodicLocationUpdates() {
         if (!mRequestingLocationUpdates) {
-            // Changing the button text
-//            btnStartLocationUpdates
-//                    .setText(getString(R.string.btn_stop_location_updates));
 
             mRequestingLocationUpdates = true;
-
             // Starting the location updates
             startLocationUpdates();
-
             Log.d(TAG, "Periodic location updates started!");
-
         } else {
-            // Changing the button text
-//            btnStartLocationUpdates
-//                    .setText(getString(R.string.btn_start_location_updates));
 
             mRequestingLocationUpdates = false;
-
             // Stopping the location updates
             stopLocationUpdates();
-
             Log.d(TAG, "Periodic location updates stopped!");
         }
     }
@@ -192,13 +179,6 @@ public class LocationHelper implements GoogleApiClient.ConnectionCallbacks,
         BaseActivity consumerActivity = mListener.getConsumerActivity();
 
         if (ActivityCompat.checkSelfPermission(consumerActivity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(consumerActivity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         LocationServices.FusedLocationApi.requestLocationUpdates(

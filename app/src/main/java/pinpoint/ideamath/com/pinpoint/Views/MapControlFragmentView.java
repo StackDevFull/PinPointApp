@@ -43,8 +43,9 @@ public class MapControlFragmentView extends BaseView {
 
 //        ((MapControlFragment) controller).    To call self controller
 
-        locationHelper = new LocationHelper();
+        locationHelper = LocationHelper.getInstance();
         locationHelper.setListener((MapControlFragment)controller);
+        locationHelper.connect();
 
         try {
             if (googleMap == null) {
@@ -77,6 +78,10 @@ public class MapControlFragmentView extends BaseView {
                 locationHelper.togglePeriodicLocationUpdates();
             }
         });
+    }
+
+    public void updateLocationLbl(double latitude, double longitude) {
+        lblLocation.setText(latitude + ", " + longitude);
     }
 
     @Override
