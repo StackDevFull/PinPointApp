@@ -47,7 +47,9 @@ public class LocationHelper implements GoogleApiClient.ConnectionCallbacks,
     private static int DISPLACEMENT = 10; // 10 meters
     LocationHelperEventListener mListener;
 
-    public LocationHelper() {}
+    public LocationHelper() {
+
+    }
 
     public static LocationHelper getInstance() {
         if (helperInstance == null){

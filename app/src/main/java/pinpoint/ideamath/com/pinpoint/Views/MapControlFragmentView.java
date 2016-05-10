@@ -20,7 +20,6 @@ import pinpoint.ideamath.com.pinpoint.helpers.LocationHelper;
  */
 public class MapControlFragmentView extends BaseView {
 
-    static final LatLng TutorialsPoint = new LatLng(21 , 57);
     private GoogleMap googleMap;
     LocationHelper locationHelper;
 
@@ -43,26 +42,44 @@ public class MapControlFragmentView extends BaseView {
 
 //        ((MapControlFragment) controller).    To call self controller
 
+        setupLocationHelper();
+        setupGMap();
+        setupUIElements();
+    }
+
+    private void setupLocationHelper(){
         locationHelper = LocationHelper.getInstance();
         locationHelper.setListener((MapControlFragment)controller);
         locationHelper.connect();
+    }
 
+    private void setupGMap(){
         try {
             if (googleMap == null) {
                 googleMap = ((MapFragment)(((MapControlFragment) controller).getBaseActivity()).getFragmentManager().findFragmentById(R.id.map)).getMap();
             }
             googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-            Marker TP = googleMap.addMarker(new MarkerOptions().
-                    position(TutorialsPoint).title("TutorialsPoint"));
         }
         catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    private void setupUIElements(){
         lblLocation = (TextView) findViewById(R.id.lblLocation);
         btnShowLocation = (Button) findViewById(R.id.btnShowLocation);
         btnStartLocationUpdates = (Button) findViewById(R.id.btnLocationUpdates);
+    }
 
+    public void updateLocationLbl(double latitude, double longitude) {
+        lblLocation.setText(latitude + ", " + longitude);
+        LatLng currentLocation = new LatLng(latitude , longitude);
+        Marker TP = googleMap.addMarker(new MarkerOptions().
+                position(currentLocation).title("Current Location"));
+    }
+
+    @Override
+    public void setActionListeners() {
         btnShowLocation.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -78,14 +95,5 @@ public class MapControlFragmentView extends BaseView {
                 locationHelper.togglePeriodicLocationUpdates();
             }
         });
-    }
-
-    public void updateLocationLbl(double latitude, double longitude) {
-        lblLocation.setText(latitude + ", " + longitude);
-    }
-
-    @Override
-    public void setActionListeners() {
-
     }
 }

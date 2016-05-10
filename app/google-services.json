@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "864078101587",
+    "project_id": "banded-object-130109"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864078101587:android:9f1ca86819f5338a",
+        "android_client_info": {
+          "package_name": "pinpoint.ideamath.com.pinpoint"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864078101587-ongdcd6mcpvom6bccg88sb8o0tgj6j8f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pinpoint.ideamath.com.pinpoint",
+            "certificate_hash": "34F6173EE9376C78E05170A72E42B007C7583CE8"
+          }
+        },
+        {
+          "client_id": "864078101587-flmsslktc34da2pvp0nsnpdor69ni2b6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALewql7LPuGSKgStnWOozHN4MRAy8dvk8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
