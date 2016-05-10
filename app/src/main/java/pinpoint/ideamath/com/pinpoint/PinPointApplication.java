@@ -11,7 +11,6 @@ public class PinPointApplication extends Application {
     Context currentContext;
 
     public static PinPointApplication getInstance() {
-
         return applicationInstance;
     }
 

@@ -25,6 +25,7 @@ import com.tenpearls.android.activities.BaseActivity;
 public class LocationHelper implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
+    static LocationHelper helperInstance;
     private String TAG = "";//MainActivity.class.getSimpleName();
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 1000;
 
@@ -34,7 +35,7 @@ public class LocationHelper implements GoogleApiClient.ConnectionCallbacks,
     private GoogleApiClient mGoogleApiClient;
 
     // boolean flag to toggle periodic location updates
-    private boolean mRequestingLocationUpdates = false;
+    public boolean mRequestingLocationUpdates = false;
 
     private LocationRequest mLocationRequest;
 
@@ -45,7 +46,11 @@ public class LocationHelper implements GoogleApiClient.ConnectionCallbacks,
     LocationHelperEventListener mListener;
 
     public LocationHelper() {
+        helperInstance = this;
+    }
 
+    public static LocationHelper getInstance() {
+        return helperInstance;
     }
 
     public void setListener(LocationHelperEventListener listener) {
@@ -57,12 +62,6 @@ public class LocationHelper implements GoogleApiClient.ConnectionCallbacks,
             buildGoogleApiClient();
             createLocationRequest();
         }
-
-//        if (checkPlayServices()) {
-//
-//            // Building the GoogleApi client
-//            buildGoogleApiClient();
-//        }
 
         start();
     }
@@ -204,6 +203,7 @@ public class LocationHelper implements GoogleApiClient.ConnectionCallbacks,
         }
         LocationServices.FusedLocationApi.requestLocationUpdates(
                 mGoogleApiClient, mLocationRequest, this);
+
     }
 
     /**

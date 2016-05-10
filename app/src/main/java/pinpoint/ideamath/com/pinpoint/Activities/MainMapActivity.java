@@ -4,18 +4,18 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 
-import com.tenpearls.android.activities.BaseActivity;
 import com.tenpearls.android.interfaces.Controller;
 import com.tenpearls.android.service.ServiceFactory;
 import com.tenpearls.android.views.BaseView;
 
 import pinpoint.ideamath.com.pinpoint.R;
+import pinpoint.ideamath.com.pinpoint.activities.base.BaseActivity;
 import pinpoint.ideamath.com.pinpoint.fragments.MapControlFragment;
 import pinpoint.ideamath.com.pinpoint.fragments.TestFragment;
 import pinpoint.ideamath.com.pinpoint.helpers.LocationHelper;
 import pinpoint.ideamath.com.pinpoint.views.MainMapActivityView;
 
-public class MainMapActivity extends BaseActivity{
+public class MainMapActivity extends BaseActivity {
 
     public void showMapFragment(){
         FragmentManager fragmentManager = getBaseActivity().getFragmentManager();
