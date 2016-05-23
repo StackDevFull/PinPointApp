@@ -37,7 +37,7 @@ public class MainMapActivity extends BaseActivity {
     }
 
     @Override
-    protected ServiceFactory getServiceFactory() {
+    protected pinpoint.ideamath.com.pinpoint.services.ServiceFactory getServiceFactory() {
         return null;
     }
 }

@@ -2,7 +2,9 @@ package pinpoint.ideamath.com.pinpoint.activities.base;
 
 import com.tenpearls.android.interfaces.Controller;
 import com.tenpearls.android.service.ServiceFactory;
+import com.tenpearls.android.service.ServiceProtocol;
 import com.tenpearls.android.views.BaseView;
+//import pinpoint.ideamath.com.pinpoint.services.ServiceFactory;
 
 import pinpoint.ideamath.com.pinpoint.PinPointApplication;
 
@@ -16,8 +18,8 @@ public abstract class BaseActivity extends com.tenpearls.android.activities.Base
     }
 
     @Override
-    protected ServiceFactory getServiceFactory() {
-        return null;
+    protected pinpoint.ideamath.com.pinpoint.services.ServiceFactory getServiceFactory() {
+        return new pinpoint.ideamath.com.pinpoint.services.ServiceFactory();
     }
 
     @Override

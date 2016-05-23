@@ -10,8 +10,10 @@ import retrofit2.http.Headers;
  */
 public interface CarService {
     @Headers({
-            "x-ibm-client-id: default",
-            "x-ibm-client-secret: SECRET"
+            "Content-Type:application/json",
+            "x-ibm-client-id:default",
+            "x-ibm-client-secret:SECRET",
+            "Accept:application/json"
     })
 
     @GET("Cars")

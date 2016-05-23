@@ -13,6 +13,6 @@ public class ServiceProtocol extends com.tenpearls.android.service.ServiceProtoc
 
     @Override
     public String getAPIUrl() {
-        return "http://localhost:4002/api/";
+        return "http://172.16.7.134:4002/api/";
     }
 }

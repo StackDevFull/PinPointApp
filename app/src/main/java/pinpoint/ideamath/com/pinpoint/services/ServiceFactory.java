@@ -12,6 +12,11 @@ public class ServiceFactory extends com.tenpearls.android.service.ServiceFactory
         }
     }
 
+//    @Override
+//    public ServiceProtocol getServiceProtocol() {
+//        return new ServiceProtocol();
+//    }
+
     @Override
     public com.tenpearls.android.service.ServiceProtocol getServiceProtocol() {
         return new ServiceProtocol();
