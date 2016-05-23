@@ -10,12 +10,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.tenpearls.android.interfaces.Controller;
+import com.tenpearls.android.interfaces.ServiceSecondaryEventHandler;
+import com.tenpearls.android.service.ServiceCallback;
 import com.tenpearls.android.views.BaseView;
 
 import pinpoint.ideamath.com.pinpoint.activities.base.BaseActivity;
+import pinpoint.ideamath.com.pinpoint.services.CarsResponse;
+import pinpoint.ideamath.com.pinpoint.services.ServiceFactory;
 import pinpoint.ideamath.com.pinpoint.views.LoginActivityView;
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements ServiceSecondaryEventHandler {
     private static final int RC_SIGN_IN = 33;
     private static final String TAG = "LoginActivity";
     public GoogleApiClient mGoogleApiClient;
@@ -23,6 +27,27 @@ public class LoginActivity extends BaseActivity {
     public void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ((ServiceFactory)serviceFactory).loadRepoService();
+        ((ServiceFactory)serviceFactory).carService.getCars().enqueue(new ServiceCallback(this, this) {
+            @Override
+            protected void onSuccess(Object response, int code) {
+
+                CarsResponse carsResponse = (CarsResponse) response;
+                carsResponse.getList();
+                //((MainActivityView)view).setRepositoryList(repoResponse.getList());
+            }
+
+            @Override
+            protected void onFailure(String errorMessage, int code) {
+
+                showToast(String.valueOf(code) + " " + errorMessage);
+            }
+        });
     }
 
     private void handleSignInResult(GoogleSignInResult result) {
@@ -39,11 +64,6 @@ public class LoginActivity extends BaseActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public BaseView getViewForController(Controller controller) {
         return new LoginActivityView(controller);
     }
@@ -57,5 +77,15 @@ public class LoginActivity extends BaseActivity {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
         }
+    }
+
+    @Override
+    public void willStartCall() {
+
+    }
+
+    @Override
+    public void didFinishCall(boolean isSuccess) {
+
     }
 }
