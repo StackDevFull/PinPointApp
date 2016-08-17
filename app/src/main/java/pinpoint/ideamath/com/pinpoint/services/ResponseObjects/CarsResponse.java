@@ -1,9 +1,11 @@
-package pinpoint.ideamath.com.pinpoint.services;
+package pinpoint.ideamath.com.pinpoint.services.ResponseObjects;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.tenpearls.android.service.response.BaseResponse;
 import com.tenpearls.android.utilities.JsonUtility;
+
+import pinpoint.ideamath.com.pinpoint.entities.CarEntity;
 
 /**
  * Created by firdous on 23/05/16.

@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "864078101587",
-    "project_id": "banded-object-130109"
+    "project_number": "927990978779",
+    "project_id": "default-demo-app-90b83"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:864078101587:android:9f1ca86819f5338a",
+        "mobilesdk_app_id": "1:927990978779:android:9f1ca86819f5338a",
         "android_client_info": {
           "package_name": "pinpoint.ideamath.com.pinpoint"
         }
       },
       "oauth_client": [
         {
-          "client_id": "864078101587-ongdcd6mcpvom6bccg88sb8o0tgj6j8f.apps.googleusercontent.com",
+          "client_id": "927990978779-qbu53oe99iibijq4e7eqbauqh8pm9086.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "pinpoint.ideamath.com.pinpoint",
-            "certificate_hash": "34F6173EE9376C78E05170A72E42B007C7583CE8"
+            "certificate_hash": "6EE71B2C93049411320EFBDF6700FC3E20A8E728"
           }
         },
         {
-          "client_id": "864078101587-flmsslktc34da2pvp0nsnpdor69ni2b6.apps.googleusercontent.com",
+          "client_id": "927990978779-4g9r3hr4trs0q6m2ub90tgk93q754bq1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyALewql7LPuGSKgStnWOozHN4MRAy8dvk8"
+          "current_key": "AIzaSyAmxjhuk7uMlyyY9VkNlgEDtfxRkEAPtD4"
         }
       ],
       "services": {

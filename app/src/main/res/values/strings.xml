@@ -11,4 +11,5 @@
     <string name="login_username_hint">Enter Username</string>
     <string name="login_password_hint">Enter Password</string>
     <string name="login">Log In</string>
+    <string name="server_client_id">864078101587-flmsslktc34da2pvp0nsnpdor69ni2b6.apps.googleusercontent.com</string>
 </resources>

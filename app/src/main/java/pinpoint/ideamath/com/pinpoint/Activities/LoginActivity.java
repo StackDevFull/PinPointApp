@@ -1,7 +1,6 @@
 package pinpoint.ideamath.com.pinpoint.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -15,7 +14,7 @@ import com.tenpearls.android.service.ServiceCallback;
 import com.tenpearls.android.views.BaseView;
 
 import pinpoint.ideamath.com.pinpoint.activities.base.BaseActivity;
-import pinpoint.ideamath.com.pinpoint.services.CarsResponse;
+import pinpoint.ideamath.com.pinpoint.services.ResponseObjects.CarsResponse;
 import pinpoint.ideamath.com.pinpoint.services.ServiceFactory;
 import pinpoint.ideamath.com.pinpoint.views.LoginActivityView;
 

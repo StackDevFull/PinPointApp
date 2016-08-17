@@ -1,4 +1,4 @@
-package pinpoint.ideamath.com.pinpoint.services;
+package pinpoint.ideamath.com.pinpoint.entities;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
